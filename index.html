@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olaleye Lateef — Cybersecurity Analyst</title>
+<meta name="description" content="Cybersecurity analyst specializing in SOC analysis, penetration testing, and network security. Portfolio of case studies and security work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0F14;
+    --surface: #121821;
+    --surface-raised: #171F2A;
+    --border: #1E2733;
+    --text: #E4E9EF;
+    --text-dim: #8A97A8;
+    --text-faint: #566274;
+    --amber: #FFB020;
+    --cyan: #4FD1C5;
+    --red: #FF5470;
+    --green: #5FD97A;
+    --radius: 3px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html[data-theme="light"] {
+    --bg: #F4F6F8;
+    --surface: #FFFFFF;
+    --surface-raised: #FFFFFF;
+    --border: #DCE3EA;
+    --text: #131A22;
+    --text-dim: #55636F;
+    --text-faint: #8896A3;
+    --amber: #B5720A;
+    --cyan: #0F8A80;
+    --red: #C4324A;
+    --green: #268A47;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  ::selection { background: var(--amber); color: #0B0F14; }
+
+  :focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+    flex-shrink: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    transition: color 0.15s ease;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a::before {
+    content: attr(data-idx);
+    color: var(--amber);
+    margin-right: 6px;
+  }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-dim);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .theme-toggle:hover { border-color: var(--cyan); color: var(--cyan); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+
+  .mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .mobile-toggle { display: block; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      gap: 18px;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 120px 0 90px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  .terminal {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 28px;
+    min-height: 22px;
+  }
+  .terminal .prompt { color: var(--cyan); }
+  .terminal .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--amber);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    max-width: 780px;
+  }
+
+  .hero h1 .accent { color: var(--cyan); }
+
+  .hero p.lead {
+    margin-top: 24px;
+    font-size: 17px;
+    color: var(--text-dim);
+    max-width: 560px;
+  }
+
+  .hero-actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 13px 22px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary {
+    background: var(--amber);
+    color: #0B0F14;
+  }
+  .btn-primary:hover { filter: brightness(1.1); }
+  .btn-ghost {
+    border-color: var(--border);
+    color: var(--text);
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* ---------- SECTION SHARED ---------- */
+  section { padding: 90px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+  }
+
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.5vw, 34px);
+    font-weight: 700;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+  }
+  @media (max-width: 780px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .about-grid p { color: var(--text-dim); margin-bottom: 16px; font-size: 15.5px; }
+  .about-grid p strong { color: var(--text); font-weight: 500; }
+
+  .skill-block { margin-bottom: 28px; }
+  .skill-block h3 {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-dim);
+    background: var(--surface);
+  }
+
+  /* ---------- WORK / CASE FILES ---------- */
+  .work-count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 780px) { .case-grid { grid-template-columns: 1fr; } }
+
+  .case {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .case:hover { border-color: var(--text-faint); transform: translateY(-2px); }
+
+  .case-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .severity {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 4px 9px;
+    border-radius: var(--radius);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .severity::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+
+  .sev-critical { color: var(--red); background: color-mix(in srgb, var(--red) 14%, transparent); }
+  .sev-critical::before { background: var(--red); }
+  .sev-high { color: var(--amber); background: color-mix(in srgb, var(--amber) 14%, transparent); }
+  .sev-high::before { background: var(--amber); }
+  .sev-medium { color: var(--cyan); background: color-mix(in srgb, var(--cyan) 14%, transparent); }
+  .sev-medium::before { background: var(--cyan); }
+  .sev-info { color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); }
+  .sev-info::before { background: var(--green); }
+
+  .case-id { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); }
+
+  .case h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .case p { color: var(--text-dim); font-size: 14.5px; flex-grow: 1; }
+
+  .case-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: var(--radius);
+  }
+
+  .case-link {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--cyan);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .case-link:hover { text-decoration: underline; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+  }
+  @media (max-width: 780px) { .contact-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  .contact-info p { color: var(--text-dim); margin-bottom: 24px; font-size: 15.5px; max-width: 420px; }
+
+  .contact-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    margin-bottom: 14px;
+    color: var(--text-dim);
+  }
+  .contact-line a { color: var(--text); transition: color 0.15s ease; }
+  .contact-line a:hover { color: var(--cyan); }
+  .contact-line .k { color: var(--text-faint); min-width: 68px; }
+
+  form.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .field label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .field input, .field textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.15s ease;
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--cyan);
+  }
+
+  .form-note {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-faint);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 32px 0;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+  .footer-inner a { color: var(--text-faint); }
+  .footer-inner a:hover { color: var(--cyan); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>OLALEYE LATEEF // SEC</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" data-idx="01">Home</a>
+      <a href="#about" data-idx="02">About</a>
+      <a href="#work" data-idx="03">Work</a>
+      <a href="#contact" data-idx="04">Contact</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      </button>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME / HERO -->
+  <section class="hero" id="home" style="padding-top:100px;">
+    <div class="wrap">
+      <div class="eyebrow">AVAILABLE FOR OPPORTUNITIES</div>
+      <div class="terminal">
+        <span class="prompt">guest@portfolio</span>:~$ <span id="typedText"></span><span class="cursor"></span>
+      </div>
+      <h1>Defending networks.<br>Investigating <span class="accent">threats</span>.<br>Closing the loop.</h1>
+      <p class="lead">I'm Olaleye Lateef, a cybersecurity analyst focused on SOC monitoring, penetration testing, and network security — eager to apply mathematics and cybersecurity knowledge to real-world challenges. This is a log of the work.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View case files →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">02 / ABOUT</div>
+          <h2>Who's behind the terminal</h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p><strong>I'm a motivated cybersecurity specialist</strong> exploring SOC analysis, penetration testing, and network security — a lifelong learner passionate about building secure systems and analyzing cyber threats.</p>
+          <p>My path started with foundational cybersecurity knowledge, then moved into Security Operations Centre (SOC) monitoring and analysis, and is now growing into incident response, digital forensics, penetration testing, and GRC.</p>
+          <p>I'm open to global opportunities and always looking to sharpen my skills through hands-on internships, CTFs, and documented incident write-ups — <strong>expand this with your certifications, education, and specific focus areas.</strong></p>
+        </div>
+        <div>
+          <div class="skill-block">
+            <h3>Core Tools</h3>
+            <div class="pill-row">
+              <span class="pill">Nmap</span>
+              <span class="pill">Metasploit</span>
+              <span class="pill">Wireshark</span>
+              <span class="pill">Wazuh</span>
+              <span class="pill">pfSense</span>
+              <span class="pill">Burp Suite</span>
+              <span class="pill">Kali Linux</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3>Frameworks &amp; Focus</h3>
+            <div class="pill-row">
+              <span class="pill">SOC Analysis</span>
+              <span class="pill">Penetration Testing</span>
+              <span class="pill">Risk Assessments</span>
+              <span class="pill">Network Security</span>
+              <span class="pill">GRC</span>
+            </div>
+          </div>
+          <div class="skill-block">
+            <h3>Certifications</h3>
+            <div class="pill-row">
+              <span class="pill">— add your certifications —</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">03 / SELECTED WORK</div>
+          <h2>Case files</h2>
+        </div>
+        <div class="work-count">04 CASES LOGGED</div>
+      </div>
+
+      <div class="case-grid">
+
+        <div class="case">
+          <div class="case-top">
+            <span class="severity sev-critical">CRITICAL</span>
+            <span class="case-id">CASE-001</span>
+          </div>
+          <h3>Operation Shadow Drop — Incident Report</h3>
+          <p><em>Placeholder summary — replace with your real findings.</em> A documented incident response case covering detection, investigation, and containment steps, written up as a full incident report.</p>
+          <div class="case-meta">
+            <span class="tag">Incident Response</span>
+            <span class="tag">SOC</span>
+          </div>
+          <a href="https://github.com/Lafrosh73/Operation-Shadow-Drop-Incident-Report" target="_blank" class="case-link">View on GitHub →</a>
+        </div>
+
+        <div class="case">
+          <div class="case-top">
+            <span class="severity sev-high">HIGH</span>
+            <span class="case-id">CASE-002</span>
+          </div>
+          <h3>Operation Silent Intrusion</h3>
+          <p><em>Placeholder summary — replace with your real findings.</em> A network intrusion analysis exercise tracing attacker activity and documenting indicators of compromise.</p>
+          <div class="case-meta">
+            <span class="tag">Network Security</span>
+            <span class="tag">Threat Hunting</span>
+          </div>
+          <a href="https://github.com/Lafrosh73/Operation-Silent-Intrusion" target="_blank" class="case-link">View on GitHub →</a>
+        </div>
+
+        <div class="case">
+          <div class="case-top">
+            <span class="severity sev-medium">MEDIUM</span>
+            <span class="case-id">CASE-003</span>
+          </div>
+          <h3>CFSS SOC Analyst Internship Report</h3>
+          <p><em>Placeholder summary — replace with your real findings.</em> A write-up of hands-on SOC analyst training: alert triage, monitoring, and analysis workflows.</p>
+          <div class="case-meta">
+            <span class="tag">SOC Analysis</span>
+            <span class="tag">Monitoring</span>
+          </div>
+          <a href="https://github.com/Lafrosh73/CFSS-SOC-Analyst-Internship-Report" target="_blank" class="case-link">View on GitHub →</a>
+        </div>
+
+        <div class="case">
+          <div class="case-top">
+            <span class="severity sev-info">INFO</span>
+            <span class="case-id">CASE-004</span>
+          </div>
+          <h3>CFSS CSEH Internship Report</h3>
+          <p><em>Placeholder summary — replace with your real findings.</em> A report from certified ethical hacking training, covering methodology and key takeaways.</p>
+          <div class="case-meta">
+            <span class="tag">Penetration Testing</span>
+            <span class="tag">Ethical Hacking</span>
+          </div>
+          <a href="https://github.com/Lafrosh73/CFSS-CSEH-Internship-Report" target="_blank" class="case-link">View on GitHub →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">04 / CONTACT</div>
+          <h2>Open a channel</h2>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>Hiring, collaborating, or just want to talk about detection engineering? Send a message — I check this inbox daily.</p>
+          <div class="contact-line"><span class="k">Email</span> <a href="mailto:your.email@example.com">your.email@example.com</a></div>
+          <div class="contact-line"><span class="k">LinkedIn</span> <a href="https://www.linkedin.com/in/olaleye-lateef-opeyemi-39885b292" target="_blank">linkedin.com/in/olaleye-lateef-opeyemi-39885b292</a></div>
+          <div class="contact-line"><span class="k">GitHub</span> <a href="https://github.com/Lafrosh73" target="_blank">github.com/Lafrosh73</a></div>
+          <div class="contact-line"><span class="k">X</span> <a href="https://x.com/La_frosh73" target="_blank">@La_frosh73</a></div>
+        </div>
+        <form class="card" id="contactForm">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="justify-content:center;">Send message →</button>
+          <div class="form-note">This form opens your email client. Swap in Formspree or a backend to collect submissions directly — see notes at the bottom of the HTML file.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© 2026 Olaleye Lateef. Built with intent, not templates.</div>
+    <div><a href="#home">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const sunPath = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+  const moonPath = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    themeIcon.innerHTML = theme === 'dark' ? moonPath : sunPath;
+    try { localStorage.setItem('portfolio-theme', theme); } catch (e) {}
+  }
+
+  let saved = 'dark';
+  try { saved = localStorage.getItem('portfolio-theme') || 'dark'; } catch (e) {}
+  applyTheme(saved);
+
+  themeToggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+
+  // Mobile nav
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  mobileToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Typing effect
+  const typedEl = document.getElementById('typedText');
+  const phrase = 'whoami';
+  const result = 'security_analyst';
+  let i = 0;
+  function typeWhoami() {
+    if (i <= phrase.length) {
+      typedEl.textContent = phrase.slice(0, i);
+      i++;
+      setTimeout(typeWhoami, 90);
+    } else {
+      setTimeout(() => {
+        typedEl.innerHTML = phrase + ' <span style="color:var(--text-faint)">→</span> ' + result;
+      }, 500);
+    }
+  }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    typeWhoami();
+  } else {
+    typedEl.textContent = phrase + ' → ' + result;
+  }
+
+  // Contact form -> mailto fallback
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    const subject = encodeURIComponent('Portfolio contact from ' + name);
+    const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:your.email@example.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+<!--
+  CUSTOMIZATION NOTES
+  ====================
+  1. Replace "Alex Rivera" throughout (nav logo, hero, about, footer) with your name.
+  2. Update the email address in the Contact section and in the JS mailto handler.
+  3. Swap the case files in #work with your real projects — keep the severity tag
+     if it fits your content, or repurpose it as a "type" label (e.g. AUDIT, TOOL, WRITE-UP).
+  4. For a real (non-mailto) contact form on GitHub Pages, sign up at formspree.io,
+     set the <form> action to your Formspree endpoint, and remove the JS submit handler.
+  5. To add a resume download: add a <a href="resume.pdf" download class="btn btn-ghost">
+     button next to "Get in touch" in the hero.
+-->
+
+</body>
+</html>
