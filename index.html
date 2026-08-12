@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Olaleye Lateef — Cybersecurity Analyst</title>
-<meta name="description" content="Cybersecurity analyst specializing in SOC analysis, penetration testing, and network security. Portfolio of case studies and security work.">
+<title>Olaleye Lateef — Cybersecurity Consultant</title>
+<meta name="description" content="Cybersecurity consultant specializing in SOC analysis, penetration testing, and network security — helping individuals transition into cybersecurity careers. Portfolio, services, and consulting.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -315,6 +315,197 @@
     background: var(--surface);
   }
 
+  /* ---------- HERO VISUAL ---------- */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; margin-bottom: 8px; }
+  }
+
+  .hero-visual svg { width: 100%; height: auto; }
+
+  @keyframes pulseNode {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  @keyframes dashScan {
+    to { stroke-dashoffset: -200; }
+  }
+  .hv-scan { stroke-dasharray: 6 6; animation: dashScan 6s linear infinite; }
+  .hv-node { animation: pulseNode 2.4s ease-in-out infinite; }
+  .hv-node:nth-child(2) { animation-delay: 0.4s; }
+  .hv-node:nth-child(3) { animation-delay: 0.8s; }
+  .hv-node:nth-child(4) { animation-delay: 1.2s; }
+
+  /* ---------- CERT MODAL ---------- */
+  .cert-btn {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-dim);
+    background: var(--surface);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .cert-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+  .cert-btn svg { width: 12px; height: 12px; }
+
+  .cert-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(4,6,9,0.82);
+    backdrop-filter: blur(4px);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .cert-modal-overlay.open { display: flex; }
+
+  .cert-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    max-width: 720px;
+    width: 100%;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .cert-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cert-modal-head h4 {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+  .cert-modal-close {
+    background: none;
+    border: none;
+    color: var(--text-faint);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+  .cert-modal-close:hover { color: var(--red); }
+  .cert-modal-body {
+    padding: 20px;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cert-modal-body img {
+    max-width: 100%;
+    max-height: 72vh;
+    border-radius: var(--radius);
+    user-select: none;
+    pointer-events: none;
+  }
+  .cert-modal-note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    padding: 0 20px 16px;
+    text-align: center;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 780px) { .services-grid { grid-template-columns: 1fr; } }
+
+  .service {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .service:hover { border-color: var(--text-faint); transform: translateY(-2px); }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--cyan) 14%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cyan);
+    flex-shrink: 0;
+  }
+  .service-icon svg { width: 18px; height: 18px; }
+
+  .service h3 {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+  }
+
+  .service p { color: var(--text-dim); font-size: 14.5px; flex-grow: 1; }
+
+  .service-link {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--green);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .service-link:hover { text-decoration: underline; }
+
+  /* WhatsApp accents */
+  .btn-whatsapp {
+    background: var(--green);
+    color: #0B0F14;
+  }
+  .btn-whatsapp:hover { filter: brightness(1.1); }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    transition: transform 0.15s ease;
+  }
+  .whatsapp-float:hover { transform: scale(1.07); }
+  .whatsapp-float svg { width: 26px; height: 26px; fill: #0B0F14; }
+
   /* ---------- WORK / CASE FILES ---------- */
   .work-count {
     font-family: var(--font-mono);
@@ -500,10 +691,12 @@
     <nav class="nav-links" id="navLinks">
       <a href="#home" data-idx="01">Home</a>
       <a href="#about" data-idx="02">About</a>
-      <a href="#work" data-idx="03">Work</a>
-      <a href="#contact" data-idx="04">Contact</a>
+      <a href="#services" data-idx="03">Services</a>
+      <a href="#work" data-idx="04">Work</a>
+      <a href="#contact" data-idx="05">Contact</a>
     </nav>
     <div style="display:flex; align-items:center; gap:10px;">
+      <a href="https://wa.me/2349152471292" target="_blank" class="btn btn-whatsapp" style="padding:9px 14px;">WhatsApp</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
         <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
       </button>
@@ -517,15 +710,51 @@
   <!-- HOME / HERO -->
   <section class="hero" id="home" style="padding-top:100px;">
     <div class="wrap">
-      <div class="eyebrow">AVAILABLE FOR OPPORTUNITIES</div>
-      <div class="terminal">
-        <span class="prompt">lateef@portfolio</span>:~$ <span id="typedText"></span><span class="cursor"></span>
-      </div>
-      <h1>Defending networks.<br>Investigating <span class="accent">threats</span>.<br>Closing the loop.</h1>
-      <p class="lead">I'm Olaleye Lateef, a cybersecurity analyst focused on SOC monitoring, penetration testing, and network security eager to apply mathematics and cybersecurity knowledge to real-world challenges. This is a log of the work.</p>
-      <div class="hero-actions">
-        <a href="#work" class="btn btn-primary">View case files →</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">CYBERSECURITY CONSULTANT · OPEN FOR CLIENTS &amp; MENTEES</div>
+          <div class="terminal">
+            <span class="prompt">guest@portfolio</span>:~$ <span id="typedText"></span><span class="cursor"></span>
+          </div>
+          <h1>Securing networks.<br>Mentoring the next <span class="accent">generation</span>.<br>Closing the loop.</h1>
+          <p class="lead">I'm Olaleye Lateef, a cybersecurity consultant working across SOC monitoring, penetration testing, and network security. I also help people break into the field — if you're looking to transition into cybersecurity, let's talk.</p>
+          <div class="hero-actions">
+            <a href="https://wa.me/2349152471292" target="_blank" class="btn btn-whatsapp">Chat on WhatsApp →</a>
+            <a href="#services" class="btn btn-ghost">See services</a>
+            <a href="#work" class="btn btn-ghost">View case files</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="180" r="150" fill="none" stroke="var(--border)" stroke-width="1"/>
+            <circle cx="200" cy="180" r="110" fill="none" stroke="var(--border)" stroke-width="1"/>
+            <circle cx="200" cy="180" r="150" fill="none" stroke="var(--cyan)" stroke-width="1.5" class="hv-scan" stroke-dasharray="4 10" opacity="0.5"/>
+
+            <!-- shield -->
+            <path d="M200 70 L260 95 V180 C260 230 234 262 200 280 C166 262 140 230 140 180 V95 Z"
+                  fill="var(--surface)" stroke="var(--cyan)" stroke-width="2.5"/>
+            <path d="M175 178 L192 195 L228 155" fill="none" stroke="var(--amber)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- orbiting nodes -->
+            <circle cx="70" cy="120" r="5" fill="var(--amber)" class="hv-node"/>
+            <circle cx="335" cy="140" r="5" fill="var(--cyan)" class="hv-node"/>
+            <circle cx="90" cy="290" r="5" fill="var(--green)" class="hv-node"/>
+            <circle cx="320" cy="280" r="5" fill="var(--red)" class="hv-node"/>
+
+            <line x1="70" y1="120" x2="150" y2="150" stroke="var(--border)" stroke-width="1"/>
+            <line x1="335" y1="140" x2="255" y2="155" stroke="var(--border)" stroke-width="1"/>
+            <line x1="90" y1="290" x2="165" y2="240" stroke="var(--border)" stroke-width="1"/>
+            <line x1="320" y1="280" x2="245" y2="240" stroke="var(--border)" stroke-width="1"/>
+
+            <!-- terminal readout -->
+            <rect x="60" y="330" width="280" height="70" rx="3" fill="var(--surface)" stroke="var(--border)"/>
+            <circle cx="80" cy="348" r="4" fill="var(--red)"/>
+            <circle cx="96" cy="348" r="4" fill="var(--amber)"/>
+            <circle cx="112" cy="348" r="4" fill="var(--green)"/>
+            <text x="80" y="376" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--text-dim)">$ scan --target 10.0.0.0/24</text>
+            <text x="80" y="392" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--green)">✓ 0 critical findings</text>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
@@ -541,9 +770,9 @@
       </div>
       <div class="about-grid">
         <div>
-          <p><strong>I'm a motivated cybersecurity specialist</strong> exploring SOC analysis, penetration testing, and network security a lifelong learner passionate about building secure systems and analyzing cyber threats.</p>
+          <p><strong>I'm a motivated cybersecurity specialist</strong> exploring SOC analysis, penetration testing, and network security — a lifelong learner passionate about building secure systems and analyzing cyber threats.</p>
           <p>My path started with foundational cybersecurity knowledge, then moved into Security Operations Centre (SOC) monitoring and analysis, and is now growing into incident response, digital forensics, penetration testing, and GRC.</p>
-          <p>I'm open to global opportunities and always looking to sharpen my skills through hands-on internships, CTFs, and documented incident write-ups  <strong>expand this with your certifications, education, and specific focus areas.</strong></p>
+          <p>I'm open to global opportunities and always looking to sharpen my skills through hands-on internships, CTFs, and documented incident write-ups — <strong>expand this with your certifications, education, and specific focus areas.</strong></p>
         </div>
         <div>
           <div class="skill-block">
@@ -571,10 +800,68 @@
           <div class="skill-block">
             <h3>Certifications</h3>
             <div class="pill-row">
-              <span class="pill">— add your certifications —</span>
+              <button class="cert-btn" onclick="openCert('certs/sample-cert.jpg', 'CompTIA Security+')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                CompTIA Security+
+              </button>
+              <button class="cert-btn" onclick="openCert('certs/sample-cert.jpg', 'CySA+')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                CySA+
+              </button>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="section-tag">03 / SERVICES</div>
+          <h2>How I can help</h2>
+        </div>
+      </div>
+      <div class="services-grid">
+
+        <div class="service">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Career Transition Mentorship</h3>
+          <p>1:1 guidance for people moving into cybersecurity — where to start, which certs matter, how to build a portfolio like this one, and how to land your first SOC or analyst role.</p>
+          <a href="https://wa.me/2349152471292" target="_blank" class="service-link">Message me on WhatsApp →</a>
+        </div>
+
+        <div class="service">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>SOC &amp; Threat Detection Consulting</h3>
+          <p>Support for teams that need alert triage workflows built out, SIEM tuning, or a second set of eyes on detection coverage and incident response process.</p>
+          <a href="https://wa.me/2349152471292" target="_blank" class="service-link">Message me on WhatsApp →</a>
+        </div>
+
+        <div class="service">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <h3>Security Audits &amp; Risk Assessments</h3>
+          <p>Network and infrastructure reviews to surface misconfigurations, exposed services, and weak points — with a plain-language report your team can act on.</p>
+          <a href="https://wa.me/2349152471292" target="_blank" class="service-link">Message me on WhatsApp →</a>
+        </div>
+
+        <div class="service">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
+          <h3>Training &amp; Workshops</h3>
+          <p>Practical sessions on SOC fundamentals, penetration testing basics, or security awareness — for individuals, bootcamp cohorts, or small teams.</p>
+          <a href="https://wa.me/2349152471292" target="_blank" class="service-link">Message me on WhatsApp →</a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -584,7 +871,7 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <div class="section-tag">03 / SELECTED WORK</div>
+          <div class="section-tag">04 / SELECTED WORK</div>
           <h2>Case files</h2>
         </div>
         <div class="work-count">04 CASES LOGGED</div>
@@ -657,17 +944,19 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <div class="section-tag">04 / CONTACT</div>
+          <div class="section-tag">05 / CONTACT</div>
           <h2>Open a channel</h2>
         </div>
       </div>
       <div class="contact-grid">
         <div class="contact-info">
-          <p>Hiring, collaborating, or just want to talk about detection engineering? Send a message — I check this inbox daily.</p>
-          <div class="contact-line"><span class="k">Email</span> <a href="mailto:lateefopeyemi73@gmail.com">lateefopeyemi73@gmail.com</a></div>
+          <p>Hiring, consulting work, or thinking about a move into cybersecurity? Reach out — WhatsApp is the fastest way to reach me, or send a message below.</p>
+          <div class="contact-line"><span class="k">WhatsApp</span> <a href="https://wa.me/2349152471292" target="_blank">+234 915 247 1292</a></div>
+          <div class="contact-line"><span class="k">Email</span> <a href="mailto:your.email@example.com">your.email@example.com</a></div>
           <div class="contact-line"><span class="k">LinkedIn</span> <a href="https://www.linkedin.com/in/olaleye-lateef-opeyemi-39885b292" target="_blank">linkedin.com/in/olaleye-lateef-opeyemi-39885b292</a></div>
           <div class="contact-line"><span class="k">GitHub</span> <a href="https://github.com/Lafrosh73" target="_blank">github.com/Lafrosh73</a></div>
           <div class="contact-line"><span class="k">X</span> <a href="https://x.com/La_frosh73" target="_blank">@La_frosh73</a></div>
+          <a href="https://wa.me/2349152471292" target="_blank" class="btn btn-whatsapp" style="margin-top:10px;">Message on WhatsApp →</a>
         </div>
         <form class="card" id="contactForm">
           <div class="field">
@@ -683,7 +972,7 @@
             <textarea id="message" name="message" rows="4" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="justify-content:center;">Send message →</button>
-          <div class="form-note">This form opens your email client. Swap in Formspree or a backend to collect submissions directly see notes at the bottom of the HTML file.</div>
+          <div class="form-note">This form opens your email client. Swap in Formspree or a backend to collect submissions directly — see notes at the bottom of the HTML file.</div>
         </form>
       </div>
     </div>
@@ -698,7 +987,45 @@
   </div>
 </footer>
 
+<!-- CERTIFICATE MODAL -->
+<div class="cert-modal-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="cert-modal-head">
+      <h4 id="certTitle">Certificate</h4>
+      <button class="cert-modal-close" id="certClose" aria-label="Close">×</button>
+    </div>
+    <div class="cert-modal-body">
+      <img id="certImage" src="" alt="Certificate" oncontextmenu="return false;" draggable="false">
+    </div>
+    <div class="cert-modal-note">View only — right-click and drag are disabled on this image.</div>
+  </div>
+</div>
+
+<a href="https://wa.me/2349152471292" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.9-4.44 9.9-9.9s-4.44-9.93-9.9-9.93zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.15-4.9-4.34-.14-.19-1.17-1.56-1.17-2.98 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36h.55c.18 0 .42-.02.65.5.24.55.81 1.9.88 2.04.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.29-.12.58.17.29.75 1.24 1.62 2 1.11.99 2.05 1.3 2.34 1.44.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
+
 <script>
+  // Certificate modal
+  const certOverlay = document.getElementById('certOverlay');
+  const certImage = document.getElementById('certImage');
+  const certTitle = document.getElementById('certTitle');
+  const certClose = document.getElementById('certClose');
+
+  function openCert(src, title) {
+    certImage.src = src;
+    certTitle.textContent = title;
+    certOverlay.classList.add('open');
+  }
+  function closeCert() {
+    certOverlay.classList.remove('open');
+    certImage.src = '';
+  }
+  certClose.addEventListener('click', closeCert);
+  certOverlay.addEventListener('click', (e) => { if (e.target === certOverlay) closeCert(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCert(); });
+  certImage.addEventListener('contextmenu', (e) => e.preventDefault());
+
   // Theme toggle
   const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
@@ -730,7 +1057,7 @@
   // Typing effect
   const typedEl = document.getElementById('typedText');
   const phrase = 'whoami';
-  const result = 'security_analyst';
+  const result = 'security_consultant';
   let i = 0;
   function typeWhoami() {
     if (i <= phrase.length) {
@@ -764,14 +1091,26 @@
 <!--
   CUSTOMIZATION NOTES
   ====================
-  1. Replace "Alex Rivera" throughout (nav logo, hero, about, footer) with your name.
-  2. Update the email address in the Contact section and in the JS mailto handler.
+  1. Update the email address in the Contact section and in the JS mailto handler.
+  2. WhatsApp number is set to https://wa.me/2349152471292 in four places: nav button,
+     hero CTA, each service card link, and the floating button. Search "2349152471292"
+     to update all of them if the number changes. Do not include "+" in wa.me links.
   3. Swap the case files in #work with your real projects — keep the severity tag
      if it fits your content, or repurpose it as a "type" label (e.g. AUDIT, TOOL, WRITE-UP).
-  4. For a real (non-mailto) contact form on GitHub Pages, sign up at formspree.io,
+  4. Edit the four service descriptions in #services to match what you actually offer
+     and how you price/scope them (add rates or "DM for pricing" if you want).
+  5. For a real (non-mailto) contact form on GitHub Pages, sign up at formspree.io,
      set the <form> action to your Formspree endpoint, and remove the JS submit handler.
-  5. To add a resume download: add a <a href="resume.pdf" download class="btn btn-ghost">
-     button next to "Get in touch" in the hero.
+  7. The hero graphic is a hand-built SVG (shield, scan animation, terminal readout) —
+     no external image file needed, it's just code. Colors follow your theme automatically.
+  8. Certificates open in an in-page modal instead of linking out. To add a real one:
+     upload the image to a "certs/" folder in your repo (same level as index.html),
+     then in the Certifications block set onclick="openCert('certs/YOUR-FILE.jpg', 'Cert Name')".
+     Right-click and drag-save are disabled on the modal image as a deterrent — this is
+     not foolproof (screenshots and browser devtools can still capture it), just a speed bump.
+  9. A sample placeholder certificate image is included at certs/sample-cert.jpg —
+     replace that file with your real certificate scans (keep the same filename or
+     update the onclick paths to match).
 -->
 
 </body>
